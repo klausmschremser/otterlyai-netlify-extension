@@ -1,21 +1,7 @@
-# extension.yaml
 config:
   slug: otterlyai-agentic-analytics
-  name: OtterlyAI Agentic Analytics
-  description: >
-    Sends server-side analytics events (user agent, URL, IP, etc.) to
-    OtterlyAI Agentic Analytics for every request.
-
-  # You can tighten scopes later if you want; this is a common starting point.
-  scopes:
-    site: ["read", "write"]
-    user: ["read"]
-    env: ["read"]
-
-  use_cjs_shims: false
-
-  # Minimal UI surface so the extension can show up in the Netlify UI.
-  # You can later add a React-based UI under src/ui/surfaces if you want.
+  name: otterlyai-agentic-analytics
   ui:
     surfaces:
+      - extension-team-configuration
       - extension-top-level-site-configuration

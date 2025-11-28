@@ -1,13 +1,20 @@
-// src/index.ts
+// Documentation: https://sdk.netlify.com/docs
+
 import { NetlifyExtension } from "@netlify/sdk";
+import type { TeamConfig } from "./schema/team-config.js";
+import type { SiteConfig } from "./schema/site-config.js";
 
-const extension = new NetlifyExtension();
+const extension = new NetlifyExtension<SiteConfig, TeamConfig>();
 
-// Register edge functions to be injected into consuming sites
 extension.addEdgeFunctions("./src/edge-functions", {
-  // This prefix is used when Netlify copies edge functions into the site.
-  // The final function name will look like: otterlyai_agentic_analytics-agentic-analytics
-  prefix: "otterlyai_agentic_analytics",
+  prefix: "agentic_analytics",
+  shouldInjectFunction: () => {
+    // If the edge function is not enabled, return early
+    //if (!process.env["OTTERLYAI_AGENTIC_ANALYTICS_ENABLED"]) {
+    //  return false;
+    //}
+    return true;
+  },
 });
 
 export { extension };

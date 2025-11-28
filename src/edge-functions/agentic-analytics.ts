@@ -1,3 +1,5 @@
+// Documentation: https://sdk.netlify.com/docs
+
 // src/edge-functions/agentic-analytics.ts
 import type { Config, Context } from "@netlify/edge-functions";
 
@@ -9,12 +11,12 @@ import type { Config, Context } from "@netlify/edge-functions";
  */
 export default async function handler(request: Request, context: Context) {
   //const apiKey = Netlify.env.get("AGENTIC_ANALYTICS_API_KEY");
-  const apiKey = 'netlify_dummy_api_key'; // Replace with actual method to get env variable
+  const apiKey = "your_api_key_here"; // Replace with your actual API key or use environment variable
 
   // If no API key is configured, do nothing.
   if (!apiKey) {
     context.log?.(
-      "[OtterlyAI Agentic Analytics] Missing AGENTIC_ANALYTICS_API_KEY environment variable."
+      "[Agentic Analytics] Missing AGENTIC_ANALYTICS_API_KEY environment variable."
     );
     return;
   }
