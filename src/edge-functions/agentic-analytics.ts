@@ -46,9 +46,13 @@ export default async function handler(request: Request, context: Context) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(payload),
-    }).catch((error) => {
-      context.log?.("[Agentic Analytics] Error sending event:", error);
     })
+      .then(() => {
+        context.log?.("[Agentic Analytics] Event sent successfully");
+      })
+      .catch((error) => {
+        context.log?.("[Agentic Analytics] Error sending event:", error);
+      })
   );
 
   // Return nothing to continue the normal request chain.
